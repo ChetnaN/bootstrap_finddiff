@@ -10,31 +10,17 @@ regions:
   navigation: 'Navigation'
   navigation_collapsible: 'Navigation (Collapsible)'
   header: 'Top Bar'
-  highlighted_top: 'Highlighted_top'
   highlighted: 'Highlighted'
-  highlighted_right: 'Highlighted_right'
-  help: 'Help'  
-  intro_types: 'Intro Types'
+  help: 'Help'
   content: 'Content'
-  content_right: 'Content_right'
-  content_left: 'Content_left'
-  content_bottom: 'Content_bottom'
   sidebar_first: 'Primary'
   sidebar_second: 'Secondary'
   footer: 'Footer'
-  footer_left: 'Footer_left'
-  footer_middle1: 'Footer_middle1'
-  footer_middle2: 'Footer_middle2'
-  footer_middle3: 'Footer_middle3'
-  footer_middle4: 'Footer_middle4'
-  footer_right: 'Footer_right'
-  footer_bottom: 'Footer_bottom'
   page_top: 'Page top'
   page_bottom: 'Page bottom'
 
 libraries:
   - 'bootstrap/theme'
-  - bootstrap/global-styling
 
 libraries-extend:
   core/drupal.ajax:
@@ -94,8 +80,8 @@ libraries-override:
 #  core/drupal.dialog: bootstrap/drupal.dialog
 #  core/drupal.dialog.ajax: bootstrap/drupal.dialog.ajax
 
-# Information added by Drupal.org packaging script on 2017-05-17
-version: '8.x-3.5'
+# Information added by Drupal.org packaging script on 2017-04-10
+version: '8.x-3.3'
 core: '8.x'
 project: 'bootstrap'
-datestamp: 1495038792
+datestamp: 1491860947

@@ -1,17 +1,8 @@
 // Default variables.
-//@import "default-variables";
+@import "default-variables";
 
 // Bootstrap Framework.
-//@import '../bootstrap/assets/stylesheets/bootstrap';
+@import '../bootstrap/assets/stylesheets/bootstrap';
 
 // Base-theme overrides.
-//@import 'overrides';
-
-// typography CSS.
-@import 'typography';
-
-// Custom CSS.
-@import 'custom';
-
-// responsive CSS.
-@import 'responsive';
+@import 'overrides';
