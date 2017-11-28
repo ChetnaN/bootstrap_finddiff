@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+.sbHolder { font-size: 13px; font-weight: normal; height: 30px; position: relative; width: 100%; min-width: 200px; }
+.sbSelector { display: block; height: 30px; left: 0; line-height: 30px; outline: none; position: absolute; text-indent: 10px; top: 0; width: calc(100% - 30px); }
+.sbSelector:link, .sbSelector:visited, .sbSelector:hover { color: #000; outline: none; text-decoration: none; text-transform: uppercase; }
+.sbToggle { background: url(../images/next-arrow.png) center center no-repeat; display: block; height: 30px; outline: none; position: absolute; right: 0; top: 0; width: 30px; background-size: 8px 12px; }
+.sbToggleOpen { transform: rotate(90deg); }
+.sbHolderDisabled { background-color: #3C3C3C; border: solid 1px #515151; }
+.sbOptions { background-color: #f1f2f4; list-style: none; left: -1px; margin: 0; padding: 0; position: absolute; top: 30px; min-width: 200px; width: 100%; z-index: 1; overflow-y: auto; }
+.sbOptions li { padding: 0 7px; }
+.sbOptions a { display: block; outline: none; padding: 7px 0 7px 3px; text-transform: uppercase; }
+.sbOptions a:link, .sbOptions a:visited { color: #000; text-decoration: none; }
+.sbOptions a:hover, .sbOptions a:focus, .sbOptions a.sbFocus { color: #000; background: #dadee1; }
+.sbOptions li.last a { border-bottom: none; }
+.sbOptions .sbDisabled { border-bottom: dotted 1px #515151; color: #999; display: block; padding: 7px 0 7px 3px; }
+.sbOptions .sbGroup { border-bottom: dotted 1px #515151; color: #EBB52D; display: block; font-weight: bold; padding: 7px 0 7px 3px; }
+.sbOptions .sbSub { padding-left: 17px; }

@@ -1,0 +1,130 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+     Only "getter" methods (method names starting with "get", "has", or "is")
+     and a few common methods such as "id" and "label" are available. Calling
+     other methods (such as node.delete) will result in an exception.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    not node.isPublished() ? 'is-unpublished',
+    view_mode ? view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+
+  {{ title_prefix }}
+  {% if not page %}
+  {% endif %}
+  {{ title_suffix }}
+
+  {% if display_submitted %}
+    <footer>
+      {{ author_picture }}
+      <div{{ author_attributes.addClass('author') }}>
+        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+        {{ metadata }}
+      </div>
+    </footer>
+  {% endif %}
+
+  <div{{ content_attributes.addClass('content') }}>
+    <div class="resource-box">
+    <figure>
+      {{ content.field_thumbnail_image }}
+    </figure> 
+    <div class="content-wrap">
+    <h5>{{ node.type.entity.label }}</h5>
+    <h4 class="oxygen"><a href="{{ url }}">{{ label }}</a></h4>
+      <a href="{{ url }}" class="p_style">{{ content.field_cta_link_text }}</a>
+
+   <!-- <p class="hidethis">
+    {% for key, item in content.field_slider_image if key|first != '#' and key == 0 %}
+      {{ item }}
+    {% endfor %}
+    </p>
+    <div class="view-resources-library-popup catcher">
+      {% if vault.value == 0 %} 
+      {# Non-vaulted #}
+        <a href="javascript:void(0)" class="open_popup ty_div p_style" data-toggle="modal" data-target="#exampleModal"> {{ output.form_landing.download_text }}</a>
+        <span class="hidethis">{{ view_output }}</span>
+      {% else %} 
+      {# Vaulted #}
+        <div class="view-resources-library-popup">
+        <span class="hidethis">{{ output.form_landing.body_text }}</span>
+
+        <a href="javascript:void(0)" class="open_popup p_style" data-toggle="modal" data-target="#exampleModal" data-imgurl="" data-iframe-url="{{ output.form_landing.iframe }}?&return_url={{ return_url_encoded }}&title={{ output.form_landing.body_text }}&form_banner_text={{ output.form_landing.body_text }}&form_button_text={{ output.form_landing.download_text }}&page_title={{ output.form_landing.form_title }}" data-banner-text="{{ output.form_landing.form_title }}"> {{ output.form_landing.download_text }}</a>
+        </div>
+      {% endif %}
+    </div>
+    -->
+    </div>
+    </div>
+    {# {{ content }}#}
+  </div>
+
+</article>

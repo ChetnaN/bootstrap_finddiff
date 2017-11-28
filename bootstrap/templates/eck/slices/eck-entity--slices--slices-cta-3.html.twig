@@ -1,0 +1,21 @@
+<div style="background-color:{{ entity.field_background_color[0] }}">
+<div class="cta-3">
+	<div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+					<div class="cta-classes">
+					{% if entity.field_image[0] %}
+						<figure>{{ entity.field_image[0] }}</figure>
+					{% elseif not entity.field_image[0] %}
+						<figure>{{ entity.field_svg_image[0] }}</figure>
+					{% endif %}
+					  <h3>
+					      {{ entity.field_title[0] }}
+					      <span>{{ entity.field_link[0] }}</span>
+					  </h3>
+					</div>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>

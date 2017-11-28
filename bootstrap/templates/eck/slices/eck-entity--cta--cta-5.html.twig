@@ -1,0 +1,15 @@
+
+<!-- <div style="background-color:{{ entity.field_background_color[0] }}"> -->
+{% if entity.field_background_image[0] %}
+<div style="background-image: url({{ entity.field_background_image[0] }})">
+{% else %}
+<div style="background-color:{{ entity.field_background_color[0] }}">
+{% endif %}
+<figure>
+    {{ entity.field_small_image[0] }}
+</figure>
+    <h3>{{ entity.field_title_h3[0] }}</h3>
+<h4>		
+	<a style="color: {{ entity.field_link_color[0] }};" href="{{ entity.field_link[0]['#url'] }}"> {{ entity.field_link[0]['#title'] }}   </a>
+</h4>
+</div> 

@@ -1,0 +1,64 @@
+{#
+/**
+ * @file
+ * Default theme implementation for displaying a view as a table.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ *   - class: HTML classes that can be used to style contextually through CSS.
+ * - title : The title of this group of rows.
+ * - header: The table header columns.
+ *   - attributes: Remaining HTML attributes for the element.
+ *   - content: HTML classes to apply to each header cell, indexed by
+ *   the header's key.
+ * - caption_needed: Is the caption tag needed.
+ * - caption: The caption for this table.
+ * - accessibility_description: Extended description for the table details.
+ * - accessibility_summary: Summary for the table details.
+ * - responsive: Whether or not to use the .table-responsive wrapper.
+ * - rows: Table row items. Rows are keyed by row number.
+ *   - attributes: HTML classes to apply to each row.
+ *   - columns: Row column items. Columns are keyed by column number.
+ *     - attributes: HTML classes to apply to each column.
+ *     - content: The column content.
+ * - bordered: Flag indicating whether or not the table should be bordered.
+ * - condensed: Flag indicating whether or not the table should be condensed.
+ * - hover: Flag indicating whether or not table rows should be hoverable.
+ * - striped: Flag indicating whether or not table rows should be striped.
+ * - responsive: Flag indicating whether or not the table should be wrapped to
+ *   be responsive (using the Bootstrap Framework .table-responsive wrapper).
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_views_view_table()
+ */
+#}
+{%
+  set classes = [
+    'table',
+    bordered ? 'table-bordered',
+    condensed ? 'table-condensed',
+    hover ? 'table-hover',
+    striped ? 'table-striped',
+    sticky ? 'sticky-enabled',
+  ]
+%}
+
+  <div id="content" class="clearfix">  
+    <div id="slider">
+      <ul class="slider_8_cp11" id="contentid-8-cp23" style="visibility: hidden;">  
+        {% for row in rows %}
+          <li>            
+           <div class="slider-8-bg slider-8" style="background-image:url('{{ row.columns.field_background_image.content.0.field_output }}'); background-repeat: no-repeat;"></div>
+            <div class="slider-8-content slider-8" style="background-color:{{ row.columns.field_background_color.content.0.field_output }};" >
+              <div class="slider-8-width">
+              {{ row.columns.edit_slices.content.0.field_output }}     
+              <h3>{{ row.columns.field_title.content.0.field_output }}</h3>
+              <p>{{ row.columns.field_text.content.0.field_output }}</p>
+              </div>
+            </div>   
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
